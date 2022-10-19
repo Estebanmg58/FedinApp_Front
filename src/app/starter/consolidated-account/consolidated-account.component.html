@@ -1,0 +1,29 @@
+<app-spinner *ngIf="viewSpinner"></app-spinner>
+<app-header [nomModule]="nomModule"></app-header>
+<mat-card-content>
+    <mat-accordion class="example-headers-align">
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" (closed)="setStep(1)">
+            <mat-expansion-panel-header>
+                <div style="text-align: center; padding-top: 10px;">
+                  <!-- <div class="modal-body"> -->
+                    <!-- <div class="panel-body"> -->
+
+
+
+                    </div>
+            </mat-expansion-panel-header>
+
+              <div class="panel-body">
+                  <div style="text-align: center;">
+                    <object  id="EsatadoCuenta"></object>
+                  </div>
+              </div>
+            <mat-divider></mat-divider>
+            <div style="text-align: center; padding-top: 30px;">
+                <button mat-flat-button color="primary" matTooltip="Descargar" (click)="descargarPDF()"><mat-icon>file_download</mat-icon>&nbsp; Descargar</button>&nbsp;&nbsp;
+                <button mat-flat-button color="accent" matTooltip="Enviar correo" (click)="enviarCorreo()"><mat-icon>outgoing_mail</mat-icon>&nbsp; Enviar Correo</button>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+</mat-card-content>

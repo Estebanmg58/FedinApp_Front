@@ -1,0 +1,45 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="/" class="brand-link">
+        <img src="../../assets/img/LOGO-ORIGINAL-_1_.png" alt="AdminLTE Logo" style="opacity: .8; width: 61%;margin-left: 16%;">
+    </a>
+    <div class="sidebar">
+        <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <i class="nav-icon fa fa-user-circle" style="color:#c2c7d0; font-size: 2em;"></i>
+            </div>
+            <div class="info">
+                <a [routerLink]="['/starter/perfil']" class="d-block">Esteban Misas</a>
+            </div>
+        </div> -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false" style="overflow-x: hidden;">
+                <li class="nav-item">
+                    <a [routerLink]="['/starter/home/',NumeroDocumento]" class="nav-link">
+
+                        <mat-icon class="nav-icon">work icon</mat-icon>
+                        <p>
+                            Portafolio
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/starter/consolidate',NumeroDocumento]"  class="nav-link">
+                      <mat-icon class="nav-icon">assessment icon</mat-icon>
+                        <p>
+                            Consolidado estado de cuenta
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['/starter/update-account',NumeroDocumento]" class="nav-link">
+                        <mat-icon class="nav-icon">edit icon</mat-icon>
+
+                        <p>
+                            Actualizar datos
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>

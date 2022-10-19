@@ -1,0 +1,72 @@
+.mat-tab-group {
+    margin-bottom: 48px;
+}
+
+table{
+    width: 100%;
+    // border-right: 1px solid #878787  !important;
+    // border-left: 1px solid #878787  !important;
+    // border-top: 1px solid #878787  !important;
+    // border-bottom: 1px solid #878787  !important;
+}
+th{
+  border-right: 1px solid #0a5f58  !important;
+  border-bottom: 1px solid #0a5f58  !important;
+  border-top: 1px solid #0a5f58  !important;
+  border-left: 1px solid #0a5f58  !important;
+  border-radius: 50%;
+}
+td{
+  border-right: 1px solid #0a5f58  !important;
+  border-top: 1px solid #0a5f58  !important;
+  border-left: 1px solid #0a5f58  !important;
+  border-bottom: 1px solid #0a5f58  !important;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.mat-tab-label {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: transparent;
+    color: rgba(51, 126, 230, 0.793);
+    font-weight: 700;
+}
+
+
+/* Styles for the active tab label */
+
+.mat-tab-label.mat-tab-label-active {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: #17A2B8;
+    color: rgb(8, 8, 8);
+    font-weight: 700;
+}
+
+.mat-tab-label.mat-tab-label-active:focus,
+.mat-tab-label.mat-tab-label-active:hover {
+    background-color: #17A2B8;
+}
+
+
+/* Styles for the ink bar */
+
+.mat-ink-bar {
+    background-color: green;
+}
+
+p {
+    font-family: Lato;
+}
+
+
+// .table{
+//   border-right: 1px solid #bdbcbc !important;
+//   border-left: 1px solid #bdbcbc !important;
+//   border-top: 1px solid #bdbcbc !important;
+//   border-bottom: 1px solid #bdbcbc !important;
+// }

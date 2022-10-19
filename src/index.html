@@ -1,0 +1,41 @@
+<!doctype html>
+<html  lang="es-ES">
+<head>
+  <meta charset="utf-8">
+  <title>Fedin</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="./favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.3/font/bootstrap-icons.min.css" integrity="sha512-YzwGgFdO1NQw1CZkPoGyRkEnUTxPSbGWXvGiXrWk8IeSqdyci0dEDYdLLjMxq1zCoU0QBa4kHAFiRhUL3z2bow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body class="hold-transition mat-typography sidebar-mini sidebar-collapse">
+  <app-root></app-root>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lfic28iAAAAAEW3AuhocGooom1JLxnPHYDyVxOH"></script>
+
+  <script>
+
+$('#form').submit(function(event) {
+      event.preventDefault();
+      /*Cambia 6LcZu9QUAAAAACaj-WBiVIQUlr94vfCC8DUpIanS por tu clave de sitio web*/
+      grecaptcha.ready(function() {
+          grecaptcha.execute('6Lfic28iAAAAAEW3AuhocGooom1JLxnPHYDyVxOH', {action: 'registro'}).then(function(token) {
+              $('#form').prepend('<input type="hidden" name="token" value="' + token + '">');
+              $('#form').prepend('<input type="hidden" name="action" value="registro">');
+              $('#form').unbind('submit').submit();
+          });
+      });
+});
+
+  </script>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+</body>
+</html>

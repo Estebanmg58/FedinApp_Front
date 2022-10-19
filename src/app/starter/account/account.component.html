@@ -1,0 +1,72 @@
+<app-spinner *ngIf="viewSpinner"></app-spinner>
+<app-header [nomModule]="nomModule"></app-header>
+<mat-card>
+    <div style="text-align: center; padding-top: 30px; align-items: center;">
+        <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarRegistro(f)">
+          <mat-form-field appearance="fill">
+            <mat-label  matTooltip="Actualizar datos">Seleccione campo</mat-label>
+            <mat-select [(value)]="selected">
+              <mat-option value="email">Email</mat-option>
+              <mat-option value="celular">Celular</mat-option>
+              <mat-option value="clave">Contraseña</mat-option>
+            </mat-select>
+          </mat-form-field>
+            <br>
+
+
+            <div *ngIf="selected == 'email'" class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Email</mat-label>
+                    <input type="email" id="emailValue" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" placeholder="Ej. pat@example.com" required>
+                    <mat-icon matSuffix>contact_mail</mat-icon>
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Ingrese un correo válido
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Email es <strong>requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div *ngIf="selected == 'celular'" class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Celular</mat-label>
+                    <input  max="10" id="Celular" matInput [formControl]="CelularForm" [errorStateMatcher]="matcher" #phonenumber maxlength="10" placeholder="Ej. 3003857551" required>
+                    <mat-icon matSuffix>contact_phone</mat-icon>
+                    <mat-hint align="end">{{phonenumber.value.length}} / 10</mat-hint>
+                    <mat-error *ngIf="CelularForm.hasError('required')">
+                      Ingrese un número válido
+                  </mat-error>
+                </mat-form-field>
+            </div>
+            <div *ngIf="selected == 'clave'" class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Contraseña</mat-label>
+                    <input id="ClaveNv" matInput placeholder="Ej.  Mn12$.>" [formControl]="ClaveInicial" [errorStateMatcher]="matcher" [type]="hide ? 'password' : 'text'" class="form-control" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="ClaveInicial.hasError('required')">
+                              Clave inicial es <strong>requerido</strong>
+                            </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="selected == 'clave'" class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Confirmar contraseña</mat-label>
+                    <input id="ConfirmClave" matInput placeholder="Ej.  Mn12$.>" [formControl]="ClaveFinal" [errorStateMatcher]="matcher" [type]="hide ? 'password' : 'text'" class="form-control" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error *ngIf="ClaveFinal.hasError('required')">
+                              Clave inicial es <strong>requerido</strong>
+                            </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="selected != ''">
+                <button  mat-flat-button type="submit" color="primary" matTooltip="Actualizar datos" (click)="ActualizaInfo()"><mat-icon>save_as</mat-icon>&nbsp; Actualizar</button>
+            </div>
+        </form>
+    </div>
+</mat-card>

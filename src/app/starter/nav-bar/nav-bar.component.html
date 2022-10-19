@@ -1,0 +1,22 @@
+
+<app-spinner *ngIf="viewSpinner"></app-spinner>
+
+<div class="row main-header" >
+    <div class="col-6">
+        <nav class=" navbar navbar-expand navbar-white navbar-light">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="col-6">
+        <ul class="navbar-nav" style="padding-top: 10px; text-align: end;">
+            <li class="breadcrumb-item"><a (click)="cerrarSesion()" class="cursor"><span class="material-icons" style="color: red;" title="Cerrar sesión" >
+        power_settings_new
+        </span></a></li>
+        </ul>
+    </div>
+</div>

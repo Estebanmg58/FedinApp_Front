@@ -1,0 +1,219 @@
+<app-spinner *ngIf="viewSpinner"></app-spinner>
+<app-header [nomModule]="nomModule"></app-header>
+<mat-card>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 col-6">
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h2>{{SaldoAhorros}}</h2>
+
+                            <p>Ahorros</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-balance-scale"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-6">
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                          <h2>{{SaldoCredito}}</h2>
+
+                            <p>Créditos</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-credit-card"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-6">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                          <h2 >{{SaldoOtros}}</h2>
+                          <p>Convenios</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-plus-circle"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <mat-tab-group mat-align-tabs="center">
+
+        <mat-tab label="Ahorros" style="font-size: 21px !important;">
+         <mat-card-content>
+
+                <br>
+                <div class="mat-elevation-z8" *ngIf="lstAhoros.length > 0">
+                  <table mat-table [dataSource]="lstAhoros"  >
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="Consecutivo">
+                      <th mat-header-cell *matHeaderCellDef > Número cuenta </th>
+                      <td mat-cell *matCellDef="let element" > {{element.Consecutivo}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="NombreProducto">
+                      <th mat-header-cell *matHeaderCellDef> Nombre línea  </th>
+                      <td mat-cell *matCellDef="let element"> {{element.NombreProducto}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="FechaApertura">
+                      <th mat-header-cell *matHeaderCellDef style="text-align: center !important;"> Fecha apertura </th>
+                      <td mat-cell *matCellDef="let element" style="text-align: center !important;"> {{element.FechaApertura}} </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="FechaVencimiento">
+                      <th mat-header-cell *matHeaderCellDef style="text-align: center !important;"> Fecha vencimiento </th>
+                      <td mat-cell *matCellDef="let element" style="text-align: center !important;"> {{element.FechaVencimiento}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Cuota">
+                      <th mat-header-cell *matHeaderCellDef style="text-align: center !important;"> Cuota </th>
+                      <td mat-cell *matCellDef="let element" style="text-align: right !important;"> {{element.Cuota}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="Saldo">
+                      <th mat-header-cell *matHeaderCellDef style="text-align: center !important;"> Saldo </th>
+                      <td mat-cell *matCellDef="let element" style="text-align: right !important;"> {{element.Saldo}} </td>
+                    </ng-container>
+
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+<!-- 
+                  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                                 showFirstLastButtons
+                                 aria-label="Select page of periodic elements">
+                  </mat-paginator> -->
+                </div>
+
+                <div class="mat-elevation-z8" *ngIf="lstAhoros.length === 0">
+                      <p style="text-align: center;">No tienes información de ahorros</p>
+                </div>
+
+          </mat-card-content>
+        </mat-tab>
+
+        <mat-tab label="Créditos" style="font-size: 21px !important;">
+          <mat-card-content>
+
+            <br>
+              <div class="mat-elevation-z8" *ngIf="lstCreditos.length > 0">
+                <table mat-table [dataSource]="lstCreditos">
+
+                  <!-- Position Column -->
+                  <ng-container matColumnDef="NumeroPagare">
+                    <th mat-header-cell *matHeaderCellDef > Número pagaré </th>
+                    <td mat-cell *matCellDef="let element" > {{element.Pagare}} </td>
+                  </ng-container>
+
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="NombreLinea">
+                    <th mat-header-cell *matHeaderCellDef> Nombre línea  </th>
+                    <td mat-cell *matCellDef="let element"> {{element.NombreProducto}} </td>
+                  </ng-container>
+
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="FechaApertura">
+                    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha apertura </th>
+                    <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.FechaApertura}} </td>
+                  </ng-container>
+
+                  <!-- Symbol Column -->
+                  <ng-container matColumnDef="FechaVencimiento">
+                    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Fecha vencimiento </th>
+                    <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.FechaVencimiento}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Plazo">
+                    <th  mat-header-cell *matHeaderCellDef style="text-align: center;"> Plazo </th>
+                    <td mat-cell *matCellDef="let element" style="text-align: center;"> {{element.Plazo}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="MontoInicial">
+                    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Monto inicial </th>
+                    <td mat-cell *matCellDef="let element" style="text-align: right !important;"> {{element.Monto}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Cuota">
+                    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Cuota </th>
+                    <td mat-cell *matCellDef="let element" style="text-align: right !important;"> {{element.Cuota}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="Saldo">
+                    <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Saldo </th>
+                    <td mat-cell *matCellDef="let element" style="text-align: right !important;"> {{element.Saldo}} </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumnsCredito"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumnsCredito;"></tr>
+                </table>
+
+                <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                               showFirstLastButtons
+                               aria-label="Select page of periodic elements">
+                </mat-paginator> -->
+              </div>
+
+              <div class="mat-elevation-z8" *ngIf="lstCreditos.length === 0">
+                <p style="text-align: center;">No tienes información de créditos</p>
+              </div>
+
+          </mat-card-content>
+        </mat-tab>
+
+        <mat-tab label="Convenios" style="font-size: 21px !important;">
+          <mat-card-content>
+            <br>
+            <div class="mat-elevation-z8" *ngIf="lstNovedades.length > 0">
+              <table mat-table [dataSource]="lstNovedades">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="Nombre">
+                  <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                  <td mat-cell *matCellDef="let element"> {{element.NombreProducto}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="Cuota">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center !important;"> Cuota </th>
+                  <td mat-cell *matCellDef="let element" style="text-align: right !important;"> {{element.Cuota}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Saldo">
+                  <th mat-header-cell *matHeaderCellDef style="text-align: center !important;"> Saldo </th>
+                  <td mat-cell *matCellDef="let element" style="text-align: right !important;"> {{element.Saldo}} </td>
+                </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumnsOtrs"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumnsOtrs;"></tr>
+              </table>
+
+              <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                             showFirstLastButtons
+                             aria-label="Select page of periodic elements">
+              </mat-paginator> -->
+            </div>
+
+            <div class="mat-elevation-z8" *ngIf="lstNovedades.length === 0">
+              <p style="text-align: center;">No tienes información de convenios</p>
+            </div>
+
+          </mat-card-content>
+        </mat-tab>
+    </mat-tab-group>
+</mat-card>
+

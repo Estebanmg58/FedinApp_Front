@@ -1,0 +1,147 @@
+<app-spinner *ngIf="viewSpinner"></app-spinner>
+<div class="main-wrapper">
+    <img src="../../assets/img/right-bottom-ellipse.png" alt="Ellipse" class="right-bottom-ellipse" />
+    <div class="main-card">
+        <div class="left-side-wrapper" style="width: 100%;">
+            <img src="../../assets/img/LOGO-ORIGINAL-_1_.png" alt="Logo" class="logo" />
+            <div class="overlay"></div>
+            <div class="learn-more-wrapper">
+                <!-- <div class="software-eng-text">
+                    <span>Create the future you can imagine with <br />software engineering world!</span>
+                </div> -->
+            </div>
+        </div>
+        <div class="row" style="width: 100%; padding-left: 10px; padding-right: 10px; padding-top: 5%;">
+
+            <div class="col-12">
+                <div style="  text-align: right;">
+                    <p class="hora">{{dia}}{{' '+fecha}}</p>
+                    <p class="hora">{{' '+hora}}:{{minutos}}:{{segundos}}{{' '+ampm}}</p>
+                </div>
+                <div class="header-wrapper">
+                    <h3 style="border-bottom: 2px solid #113740;">Servicio en línea</h3>
+                    <div *ngIf="!btnContinuar" class="contenedor-icono" title="Regresar">
+                        <i class="bi bi-chevron-left iconoBack" (click)="Regresar()"></i><br>
+                    </div>
+                </div>
+                <div class="input-wrapper" *ngIf="btnContinuar">
+                    <br>
+                    <div class="input">
+                        <input type="number" id="numDocumento" name="number" placeholder="Número de documento" class="input-documento"/>
+                        <em class="bi bi-person-badge-fill"></em>
+                        <span class="help-block validationSpan" *ngIf="validaDocumento">
+                           El número documento es obligatorio.
+                       </span>
+                    </div>
+                    <div class="input" *ngIf="btnContinuar">
+                        <br>
+                        <br>
+                        <div style="text-align: center;">
+                            <p>Mensaje de Seguridad </p>
+                            <span class="material-icons arrow_drop_down_circle cursor" data-toggle="modal" data-target="#modalSeguridad" (click)="mensajeSeguridad = !mensajeSeguridad">
+                                arrow_drop_down_circle
+                            </span>
+
+                        </div>
+                        <input type="button" value="Siguiente" id="btnSiguiente" class="sign-in-btn" (click)="ValidExist()" />
+                    </div>
+                </div>
+                <div class="input-wrapper" *ngIf="!btnContinuar">
+                    <label for="password" class="labelInputs">Contraseña</label>
+                    <div class="input">
+                        <em>
+                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                         </button>
+                        </em>
+                        <input [type]="hide ? 'password' : 'text'" placeholder="Contraseña" name="password" id="Clave" />
+                        <span class="help-block validationSpan" *ngIf="validaClave"> La contraseña es obligatoria. </span>
+                    </div>
+                </div>
+
+                <div *ngIf="!btnContinuar">
+                  <!-- <a [routerLink]="['/starter']" id="IniciaStarter" style="display: none;">iniciarSesion</a> -->
+                  <button [routerLink]="['/starter']" id="IniciaStarter" style="display: none;"></button>
+                  <input type="button" value="Iniciar sesión" class="sign-in-btn" id="btnIniciarSesion" (click)="IniciarSesion()">
+                  <br>
+                  <!-- <div class=”container-fluid”> -->
+                    <br>
+                    <!-- <br> -->
+                    <div class=”container”>
+                        <div class=”row”>
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align: center;">
+                           <a hre="/" data-toggle="modal" data-target="#myModal" style="color:#113740" class="linkOlvidarClave">¿Olvidaste tu contraseña?</a>
+                          </div>
+                        </div>
+                    </div>
+                <!-- </div> -->
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="modal-box">
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog" role="document" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-content clearfix">
+                            <div class="modal-content clearfix">
+                                <button type="button" class="close iconoCerrarModal" data-dismiss="modal" id="segundaX" aria-label="Close"><i class="bi bi-x"></i></button>
+                                <div class="modal-body">
+
+                                    <div class="modal-icon">
+                                        <i class="bi bi-send-check-fill iconSend"></i>
+                                    </div>
+                                    <h3 class="tituloModal" style="color: #113740;">Email relacionado</h3>
+                                    <div class="input">
+                                        <input disabled type="text" id="numDocumento2" value="{{Email}}" placeholder="Email" class="input-documento" />
+                                        <em style="color: #113740;" class="bi bi-person-badge-fill"></em>
+
+                                    </div>
+                                    <br *ngIf="validaDocumento2">
+                                    <span class="help-block validationSpan" *ngIf="validaDocumento2">
+                                    El número documento es obligatorio.
+                                  </span>
+                                    <input type="button" class="btn" value="Enviar" id="btnEnviar" (click)="RecuperarClave()">
+                                    <!-- <button class="btn"  >Enviar</button> -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="modal-box">
+                <div class="modal fade" id="modalSeguridad" tabindex="1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog " role="document">
+                        <div class="modal-content ">
+                            <div class="modal-content ">
+                                <button type="button" class="close iconoCerrarModal" data-dismiss="modal" id="segundaX" aria-label="Close"><i class="bi bi-x"></i></button>
+                                <div class="modal-body">
+                                    <span>
+                                        <p>Si no recuerdas tu contraseña, por favor ingresa tu documento y cuando se habilite la opción para ingresar contraseña presiona en la opción <b>"¿Olvidaste tu contraseña?"</b>.</p>
+                                        <br>
+                                        <p>Recuerda cambiar periódicamente tu contraseña de acceso.</p>
+                                        <br>
+                                        <p>Siempre que desees ingresar a realizar consultas referentes a tus saldos, digita desde tu navegador la dirección <strong> https://www.fedin-web.com</strong>,
+                                            en la opción <strong>Servicio en Línea</strong></p>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
